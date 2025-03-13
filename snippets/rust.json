@@ -1,0 +1,70 @@
+{
+  "Print to the console": {
+    "prefix": "debug",
+    "body": ["printf!(\"{$1}\", $2);"],
+    "description": "Print to the console"
+  },
+  "Initialize struct": {
+    "prefix": "defstruct",
+    "body": ["struct $1 {\npub $2: $3\n}"]
+  },
+  "Define struct with implementation": {
+    "prefix": "implstruct",
+    "body": [
+      "struct $1 {",
+      "    pub $2: $3,",
+      "}",
+      "",
+      "impl $1 {",
+      "    pub fn new($2: $3) -> Self {",
+      "        Self { $2 }",
+      "    }",
+      "}"
+    ],
+    "description": "Defines a struct with an implementation block"
+  },
+  "Define enum": {
+    "prefix": "defenum",
+    "body": ["enum $1 {", "    $2,", "    $3,", "}"],
+    "description": "Defines an enum"
+  },
+  "Implement trait for struct": {
+    "prefix": "impltrait",
+    "body": [
+      "impl $1 for $2 {",
+      "    fn $3(&self) -> $4 {",
+      "        $0",
+      "    }",
+      "}"
+    ],
+    "description": "Implements a trait for a struct"
+  },
+  "For loop over iterator": {
+    "prefix": "foriter",
+    "body": ["for $1 in $2.iter() {", "    $0", "}"],
+    "description": "For loop over an iterator"
+  },
+  "While loop": {
+    "prefix": "while",
+    "body": ["while $1 {", "    $0", "}"],
+    "description": "Basic while loop"
+  },
+  "Async function": {
+      "prefix": "asyncfn",
+      "body": [
+        "async fn $1($2: $3) -> $4 {",
+        "    $0",
+        "}"
+      ],
+      "description": "Defines an async function"
+    },
+    "Spawn async task": {
+      "prefix": "tokspawn",
+      "body": [
+        "tokio::spawn(async move {",
+        "    $0",
+        "});"
+      ],
+      "description": "Spawns an async task"
+    }
+}
